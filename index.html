@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ripple 2K25 — Future in Code</title>
+  <meta name="description" content="Ripple 2K25 — Future in Code. RGMCET technical fest starting February 27, 2025." />
+  <meta property="og:title" content="Ripple 2K25 — Future in Code" />
+  <meta property="og:description" content="RGMCET technical fest starting February 27, 2025. Innovate. Compete. Celebrate." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/og-image.jpg" />
+  <meta name="theme-color" content="#0ef" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --bg-2: #11121a;
+      --text: #e6e7ee;
+      --muted: #a8b0c2;
+      --primary: #00e6ff;
+      --secondary: #8a2be2;
+      --accent: #00ffaa;
+      --danger: #ff3b3b;
+      --card: #141625;
+      --border: #22263a;
+    }
+    * { box-sizing: border-box }
+    html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif }
+    a { color: var(--primary); text-decoration: none }
+    img { max-width: 100%; display: block }
+    .container { width: min(1100px, 92vw); margin: 0 auto }
+
+    /* Header */
+    header {
+      position: sticky; top: 0; z-index: 20;
+      backdrop-filter: blur(8px);
+      background: linear-gradient(180deg, rgba(10,10,15,0.85) 70%, rgba(10,10,15,0) 100%);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 0;
+    }
+    .brand {
+      display: flex; align-items: center; gap: 10px;
+      font-family: Orbitron, sans-serif; font-weight: 700; letter-spacing: 0.5px;
+    }
+    .brand .logo-dot {
+      width: 12px; height: 12px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      box-shadow: 0 0 18px rgba(0, 230, 255, 0.6);
+    }
+    .nav a { color: var(--text); margin-left: 20px }
+    .cta {
+      display: inline-block; padding: 10px 16px; border-radius: 8px; font-weight: 600;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #03050a;
+      box-shadow: 0 6px 24px rgba(0, 230, 255, 0.25);
+    }
+    .cta:hover { filter: brightness(1.1) }
+
+    /* Hero */
+    .hero {
+      position: relative; overflow: hidden;
+      background: radial-gradient(1000px 600px at 10% 10%, rgba(0,230,255,0.15), transparent 60%),
+                  radial-gradient(800px 500px at 90% 30%, rgba(138,43,226,0.18), transparent 60%),
+                  linear-gradient(180deg, var(--bg), var(--bg-2));
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-content { padding: 80px 0 40px }
+    .hero h1 {
+      font-family: Orbitron, sans-serif; font-size: clamp(32px, 6vw, 56px);
+      margin: 0 0 10px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .hero .subtitle { color: var(--muted); font-size: 18px; margin-bottom: 20px }
+    .hero .meta { display: flex; flex-wrap: wrap; gap: 14px; margin: 16px 0 26px }
+    .chip {
+      border: 1px solid var(--border); border-radius: 999px;
+      padding: 8px 12px; color: var(--text); background: #0e1020;
+    }
+    .countdown {
+      display: grid; grid-template-columns: repeat(4, minmax(80px, 120px)); gap: 12px;
+    }
+    .time-box {
+      background: var(--card); border: 1px solid var(--border);
+      padding: 14px; border-radius: 12px; text-align: center;
+    }
+    .time-box .num { font-family: Orbitron, sans-serif; font-size: 28px }
+    .time-box .lbl { color: var(--muted); font-size: 12px }
+
+    /* Sections */
+    section { padding: 60px 0; border-bottom: 1px solid var(--border) }
+    h2 { font-family: Orbitron, sans-serif; font-size: clamp(22px, 3.6vw, 32px); margin: 0 0 16px }
+    .lead { color: var(--muted); margin-bottom: 22px }
+
+    /* Cards */
+    .grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)) }
+    .card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 18px;
+    }
+    .card h3 { margin: 0 0 8px; font-size: 18px }
+    .card .meta-line { color: var(--muted); font-size: 13px; margin-bottom: 8px }
+    .card .actions { margin-top: 10px }
+    .btn {
+      display: inline-block; padding: 8px 12px; border-radius: 8px; font-weight: 600;
+      border: 1px solid var(--border); color: var(--text);
+    }
+    .btn-primary { border: none; background: linear-gradient(135deg, var(--primary), var(--secondary)); color: #03050a }
+    .btn-outline:hover { border-color: var(--primary) }
+
+    /* Schedule timeline */
+    .timeline { border-left: 2px dashed var(--border); padding-left: 18px }
+    .slot { margin-bottom: 16px }
+    .slot time { font-family: Orbitron, sans-serif; color: var(--primary); font-size: 14px }
+    .slot .title { font-weight: 600; margin: 6px 0 }
+    .slot .desc { color: var(--muted); font-size: 14px }
+
+    /* Footer */
+    footer { padding: 30px 0; color: var(--muted) }
+    .footer-links { display: flex; gap: 20px; flex-wrap: wrap }
+
+    /* Responsive tweaks */
+    @media (max-width: 640px) {
+      .countdown { grid-template-columns: repeat(2, 1fr) }
+      .nav a { margin-left: 12px }
+    }
+  </style>
+</head>
+<body>
+  <header aria-label="Site">
+    <div class="container nav">
+      <div class="brand">
+        <span class="logo-dot" aria-hidden="true"></span>
+        <span>Ripple 2K25</span>
+      </div>
+      <nav aria-label="Primary">
+        <a href="#events">Events</a>
+        <a href="#schedule">Schedule</a>
+        <a href="#register" class="cta">Register</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero" id="home" aria-label="Hero">
+      <div class="container hero-content">
+        <h1>Future in Code</h1>
+        <p class="subtitle">RGMCET Technical Fest • Starts February 27, 2025</p>
+        <div class="meta" role="list">
+          <span class="chip" role="listitem">Venue: RGMCET Campus</span>
+          <span class="chip" role="listitem">Theme: Future in Code</span>
+          <span class="chip" role="listitem">Tagline: Decode Tomorrow, Today</span>
+        </div>
+
+        <div aria-live="polite">
+          <h2>Countdown</h2>
+          <p class="lead">Counting down to the grand opening.</p>
+          <div class="countdown" id="countdown" aria-label="Countdown to start">
+            <div class="time-box"><div class="num" id="days">–</div><div class="lbl">Days</div></div>
+            <div class="time-box"><div class="num" id="hours">–</div><div class="lbl">Hours</div></div>
+            <div class="time-box"><div class="num" id="minutes">–</div><div class="lbl">Minutes</div></div>
+            <div class="time-box"><div class="num" id="seconds">–</div><div class="lbl">Seconds</div></div>
+          </div>
+          <div style="margin-top:12px">
+            <a href="#register" class="btn btn-primary">Register now</a>
+            <a href="#schedule" class="btn btn-outline">View schedule</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Events -->
+    <section id="events" aria-label="Events">
+      <div class="container">
+        <h2>Flagship events</h2>
+        <p class="lead">Innovate, compete, and showcase your brilliance.</p>
+        <div class="grid">
+          <article class="card">
+            <h3>Hack the Future</h3>
+            <div class="meta-line">Duration: 24–36 hrs • Team size: 2–4</div>
+            <p>Build solutions in AI, sustainability, and smart systems.</p>
+            <div class="actions">
+              <a href="#register" class="btn btn-primary">Register</a>
+              <a href="#" class="btn btn-outline">Rules</a>
+            </div>
+          </article>
+          <article class="card">
+            <h3>Code Wars</h3>
+            <div class="meta-line">Competitive coding • Individual</div>
+            <p>Algorithmic battles with real-world problem sets.</p>
+            <div class="actions">
+              <a href="#register" class="btn btn-primary">Register</a>
+              <a href="#" class="btn btn-outline">Rules</a>
+            </div>
+          </article>
+          <article class="card">
+            <h3>Robotics Arena</h3>
+            <div class="meta-line">Line follower • Drone race • Team</div>
+            <p>Put your bots to the test in precision and speed challenges.</p>
+            <div class="actions">
+              <a href="#register" class="btn btn-primary">Register</a>
+              <a href="#" class="btn btn-outline">Rules</a>
+            </div>
+          </article>
+          <article class="card">
+            <h3>Future Talks</h3>
+            <div class="meta-line">Keynotes • Panels • AMA</div>
+            <p>Leaders discuss AI ethics, quantum, and Web3 futures.</p>
+            <div class="actions">
+              <a href="#register" class="btn btn-primary">Reserve seat</a>
+              <a href="#" class="btn btn-outline">Speakers</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Schedule -->
+    <section id="schedule" aria-label="Schedule">
+      <div class="container">
+        <h2>Schedule</h2>
+        <p class="lead">Three days of creation, competition, and celebration.</p>
+
+        <div class="grid">
+          <div class="card">
+            <h3>Day 1 — Thu, Feb 27, 2025</h3>
+            <div class="timeline">
+              <div class="slot">
+                <time>09:00</time>
+                <div class="title">Inauguration & Theme Reveal</div>
+                <div class="desc">Opening ceremony and welcome address.</div>
+              </div>
+              <div class="slot">
+                <time>10:30</time>
+                <div class="title">Keynote: Future in Code</div>
+                <div class="desc">Industry leader on AI and ethics.</div>
+              </div>
+              <div class="slot">
+                <time>12:00</time>
+                <div class="title">Hackathon Kickoff</div>
+                <div class="desc">Teams form, problem statements released.</div>
+              </div>
+              <div class="slot">
+                <time>16:00</time>
+                <div class="title">Workshop: Cybersecurity Basics</div>
+                <div class="desc">Hands-on with secure coding practices.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Day 2 — Fri, Feb 28, 2025</h3>
+            <div class="timeline">
+              <div class="slot">
+                <time>09:00</time>
+                <div class="title">Code Wars Qualifiers</div>
+                <div class="desc">Algorithmic rounds on curated problems.</div>
+              </div>
+              <div class="slot">
+                <time>11:30</time>
+                <div class="title">Robotics Arena</div>
+                <div class="desc">Line follower and drone race heats.</div>
+              </div>
+              <div class="slot">
+                <time>15:00</time>
+                <div class="title">Future Talks Panel</div>
+                <div class="desc">Quantum, Web3, and AI governance.</div>
+              </div>
+              <div class="slot">
+                <time>18:30</time>
+                <div class="title">Cultural Night</div>
+                <div class="desc">Music, dance, and open-mic.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Day 3 — Sat, Mar 1, 2025</h3>
+            <div class="timeline">
+              <div class="slot">
+                <time>09:00</time>
+                <div class="title">Hackathon Finals</div>
+                <div class="desc">Demos and judging.</div>
+              </div>
+              <div class="slot">
+                <time>12:30</time>
+                <div class="title">Tech Expo</div>
+                <div class="desc">Project showcase and startup booths.</div>
+              </div>
+              <div class="slot">
+                <time>16:00</time>
+                <div class="title">Closing Ceremony</div>
+                <div class="desc">Awards and vote of thanks.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:18px">
+          <a href="#register" class="btn btn-primary">Register</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Registration -->
+    <section id="register" aria-label="Registration">
+      <div class="container">
+        <h2>Register now</h2>
+        <p class="lead">Secure your spot. Teams and individuals welcome.</p>
+        <!-- Replace action with your form backend (Formspree/Netlify/serverless) -->
+        <form action="#" method="post" class="grid" aria-label="Registration form">
+          <div class="card">
+            <label for="name">Full name</label>
+            <input id="name" name="name" type="text" required placeholder="Your name" style="width:100%;margin-top:6px;padding:10px;border-radius:8px;border:1px solid var(--border);background:#0e1020;color:var(--text)">
+            <label for="email" style="display:block;margin-top:12px">Email</label>
+            <input id="email" name="email" type="email" required placeholder="you@example.com" style="width:100%;margin-top:6px;padding:10px;border-radius:8px;border:1px solid var(--border);background:#0e1020;color:var(--text)">
+            <label for="event" style="display:block;margin-top:12px">Event</label>
+            <select id="event" name="event" required style="width:100%;margin-top:6px;padding:10px;border-radius:8px;border:1px solid var(--border);background:#0e1020;color:var(--text)">
+              <option value="">Select an event</option>
+              <option>Hack the Future</option>
+              <option>Code Wars</option>
+              <option>Robotics Arena</option>
+              <option>Future Talks</option>
+            </select>
+            <label for="team" style="display:block;margin-top:12px">Team name (optional)</label>
+            <input id="team" name="team" type="text" placeholder="Team name" style="width:100%;margin-top:6px;padding:10px;border-radius:8px;border:1px solid var(--border);background:#0e1020;color:var(--text)">
+            <button type="submit" class="btn btn-primary" style="margin-top:14px">Submit</button>
+          </div>
+          <div class="card">
+            <h3>Guidelines</h3>
+            <ul>
+              <li>Bring a valid college ID.</li>
+              <li>Teams: 2–4 members for hackathon and robotics.</li>
+              <li>Follow the code of conduct and event-specific rules.</li>
+            </ul>
+            <p class="meta-line">Contact: ripple@rgmcet.edu • +91-XXXXXXXXXX</p>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-links">
+        <a href="#events">Events</a>
+        <a href="#schedule">Schedule</a>
+        <a href="#register">Register</a>
+      </div>
+      <p style="margin-top:10px">© 2025 RGMCET CSE — Ripple 2K25. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Countdown to Feb 27, 2025 09:00 AM IST
+    // We compute target time in local browser time based on IST offset.
+    // IST is UTC+5:30. Construct a Date in UTC then add 5.5 hours.
+    (function startCountdown() {
+      // Use a fixed ISO date for UTC, then offset to IST
+      const targetUTC = new Date(Date.UTC(2025, 1, 27, 3, 30, 0)); // Feb=1 index; 09:00 IST == 03:30 UTC
+      const target = targetUTC; // already correct absolute moment
+
+      const daysEl = document.getElementById('days');
+      const hoursEl = document.getElementById('hours');
+      const minutesEl = document.getElementById('minutes');
+      const secondsEl = document.getElementById('seconds');
+
+      function tick() {
+        const now = new Date();
+        const diff = target.getTime() - now.getTime();
+
+        if (diff <= 0) {
+          daysEl.textContent = '0';
+          hoursEl.textContent = '0';
+          minutesEl.textContent = '0';
+          secondsEl.textContent = '0';
+          return;
+        }
+        const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const m = Math.floor((diff / (1000 * 60)) % 60);
+        const s = Math.floor((diff / 1000) % 60);
+
+        daysEl.textContent = String(d);
+        hoursEl.textContent = String(h).padStart(2, '0');
+        minutesEl.textContent = String(m).padStart(2, '0');
+        secondsEl.textContent = String(s).padStart(2, '0');
+      }
+
+      tick();
+      const interval = setInterval(tick, 1000);
+      // Optional: clear after event passes
+      setTimeout(() => clearInterval(interval), Math.max(0, target.getTime() - Date.now()));
+    })();
+  </script>
+</body>
+</html>
